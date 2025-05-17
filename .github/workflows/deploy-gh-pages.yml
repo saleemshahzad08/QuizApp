@@ -41,4 +41,4 @@ jobs:
           publish_dir: './dist'
           environment: github-pages
       - name: Set deployment status
-        uses: github/pages/deployment@v4 # Slightly different call
+        uses: github/pages/deployment@v1 # Let's try an older version
