@@ -1,0 +1,16 @@
+{
+  "name": "quizapp",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "build": "node build.js"
+},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "dotenv": "^16.5.0"
+  }
+}
