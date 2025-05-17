@@ -3,7 +3,7 @@ let quizTimer;
 let timeLeft = 120; // 2 minutes in seconds
 
 // Access the API key from the environment variable
-const openAiApiKey = window.OPENROUTER_API_KEY;
+const openAiApiKey = process.env.OPENROUTER_API_KEY;
 
 async function generateQuiz() {
     const topic = document.getElementById("topic").value.trim();
