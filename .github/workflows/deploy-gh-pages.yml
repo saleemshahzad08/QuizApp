@@ -28,9 +28,13 @@ jobs:
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
         run: npm run build
 
+      - name: Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          deploy_branch: gh-pages # The branch where GitHub Pages will be served from
-          folder: dist # The output folder from your build process
+          publish_dir: './dist' # Use publish_dir instead of folder
