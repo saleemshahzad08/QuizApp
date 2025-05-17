@@ -40,5 +40,3 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
           environment: github-pages
-      - name: Set deployment status
-        uses: github/pages/deployment@v1 # Trying again with this
