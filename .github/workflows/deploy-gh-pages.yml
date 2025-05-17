@@ -6,7 +6,7 @@ on:
 
 permissions:
   id-token: write
-  contents: read
+  contents: write # Changed from read to write
 
 jobs:
   build-and-deploy:
@@ -34,3 +34,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: dist
+          force: true # Added force: true
