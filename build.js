@@ -5,8 +5,6 @@ const dotenv = require('dotenv');
 dotenv.config();
 const apiKey = process.env.OPENROUTER_API_KEY;
 
-console.log("API Key from process.env:", apiKey); // Added this line
-
 const scriptFilePath = 'script.js';
 const outputDir = 'dist';
 const outputScriptFilePath = `${outputDir}/script.js`;
@@ -19,7 +17,7 @@ fs.readFile(scriptFilePath, 'utf8', (err, data) => {
     return;
   }
 
-  const updatedScript = data.replace('process.env.OPENROUTER_API_KEY', JSON.stringify(apiKey));
+  const updatedScript = data.replace('process.env.OPENROUTER_API_KEY', `window.OPENROUTER_API_KEY = ${JSON.stringify(apiKey)};`);
 
   fs.mkdirSync(outputDir, { recursive: true });
 
@@ -28,7 +26,7 @@ fs.readFile(scriptFilePath, 'utf8', (err, data) => {
       console.error(`Failed to write to ${outputScriptFilePath}:`, writeErr);
       return;
     }
-    console.log(`API key injected into ${outputScriptFilePath}`);
+    console.log(`API key assigned to window.OPENROUTER_API_KEY in ${outputScriptFilePath}`);
 
     fs.copyFile(indexHTMLFilePath, outputIndexHTMLFilePath, (copyErr) => {
       if (copyErr) {
