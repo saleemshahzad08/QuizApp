@@ -3,7 +3,7 @@ let quizTimer;
 let timeLeft = 120; // 2 minutes in seconds
 
 // Access the API key from the environment variable
-const openAiApiKey = "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";
+const openAiApiKey = window.OPENROUTER_API_KEY;
 
 async function generateQuiz() {
     const topic = document.getElementById("topic").value.trim();
