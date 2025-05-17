@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students Quiz App</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            max-width: 600px; 
+            margin: 0 auto; 
+            padding: 20px;
+            padding-top: 110px; /* Increased space for timer + quiz info */
+        }
+        #timer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #0d6efd;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        /* New quiz info styles */
+        #quizInfo {
+            position: fixed;
+            top: 50px;
+            left: 0;
+            right: 0;
+            background: #f8f9fa;
+            padding: 8px;
+            text-align: center;
+            font-weight: bold;
+            z-index: 999;
+            border-bottom: 1px solid #ddd;
+            display: none;
+        }
+        /* Rest of existing CSS */
+        .option { 
+            padding: 10px; 
+            margin: 5px; 
+            cursor: pointer; 
+            border: 1px solid #ddd; 
+            border-radius: 5px;
+        }
+        .option:hover:not(.selected) {
+            background: #f5f5f5;
+        }
+        .selected {
+            background: #d1e7ff !important;
+            border: 1px solid #0d6efd !important;
+        }
+        .correct { background: green !important; color: white !important; }
+        .wrong { background: red !important; color: white !important; }
+        .answer { display: none; }
+        button {
+            background-color: #0d6efd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+        }
+        button:hover { background-color: #0b5ed7; }
+        button:disabled { opacity: 0.7; }
+        #submitBtn, #restartBtn {
+            display: none;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        h1 { text-align: center; }
+        .question { margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Students Quiz App</h1>
+    <input type="text" id="topic" placeholder="Enter a topic (e.g. Science)">
+    <button onclick="generateQuiz()">Generate Quiz</button>
+    
+    <!-- Added quiz info display -->
+    <div id="quizInfo">
+        Total Questions: <span id="totalQuestions">10</span> | 
+        Total Marks: <span id="totalMarks">10</span>
+    </div>
+    
+    <div id="quiz"></div>
+    <button id="submitBtn">Submit Quiz</button>
+    <button id="restartBtn" style="background-color: #6c757d;">Restart Quiz</button>
+    <script src="script.js"></script>
+</body>
+</html>
