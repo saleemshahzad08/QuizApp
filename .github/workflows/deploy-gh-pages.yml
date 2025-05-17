@@ -41,3 +41,4 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
+          deploy_branch: gh-pages # Explicitly set the deploy branch
