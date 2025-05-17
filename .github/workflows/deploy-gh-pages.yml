@@ -34,4 +34,5 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
           folder: dist
-          clean: true # Added clean: true
+          clean: true
+          target-folder: . # Explicitly target the root
