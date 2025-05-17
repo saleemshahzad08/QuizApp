@@ -39,4 +39,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
-          environment: github-pages
+          environment: # Moved directly under 'with'
+            name: github-pages
