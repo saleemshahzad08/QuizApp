@@ -12,9 +12,6 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:  # This is where environment should be declared
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -38,8 +35,8 @@ jobs:
           path: './dist'
 
       - name: Deploy to GitHub Pages
-        id: deployment  # Added an ID to reference the deployment output
         uses: actions/deploy-pages@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
+          environment: github-pages # Even simpler declaration
