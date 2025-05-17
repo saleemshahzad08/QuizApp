@@ -2,36 +2,36 @@
 const fs = require('fs');
 const dotenv = require('dotenv');
 
-// Load environment variables from .env file (if it exists)
 dotenv.config();
-
 const apiKey = process.env.OPENROUTER_API_KEY;
+const scriptFilePath = 'script.js'; // Explicitly define the input file
+const outputDir = 'dist';
+const outputScriptFilePath = `${outputDir}/script.js`;
+const indexHTMLFilePath = 'index.html';
+const outputIndexHTMLFilePath = `${outputDir}/index.html`;
 
-// Read the content of script.js
-fs.readFile('script.js', 'utf8', (err, data) => {
+fs.readFile(scriptFilePath, 'utf8', (err, data) => {
   if (err) {
-    console.error('Failed to read script.js:', err);
+    console.error(`Failed to read ${scriptFilePath}:`, err);
     return;
   }
 
-  // Replace the placeholder in script.js with the API key
   const updatedScript = data.replace('process.env.OPENROUTER_API_KEY', JSON.stringify(apiKey));
 
-  // Write the updated content to the 'dist' folder
-  fs.mkdirSync('dist', { recursive: true }); // Ensure 'dist' folder exists
-  fs.writeFile('dist/script.js', updatedScript, 'utf8', (err) => {
-    if (err) {
-      console.error('Failed to write updated script.js:', err);
+  fs.mkdirSync(outputDir, { recursive: true });
+
+  fs.writeFile(outputScriptFilePath, updatedScript, 'utf8', (writeErr) => {
+    if (writeErr) {
+      console.error(`Failed to write to ${outputScriptFilePath}:`, writeErr);
       return;
     }
-    console.log('API key injected into dist/script.js');
+    console.log(`API key injected into ${outputScriptFilePath}`);
 
-    // Optionally copy index.html to the dist folder
-    fs.copyFile('index.html', 'dist/index.html', (copyErr) => {
+    fs.copyFile(indexHTMLFilePath, outputIndexHTMLFilePath, (copyErr) => {
       if (copyErr) {
-        console.error('Failed to copy index.html:', copyErr);
+        console.error(`Failed to copy ${indexHTMLFilePath} to ${outputIndexHTMLFilePath}:`, copyErr);
       } else {
-        console.log('index.html copied to dist/');
+        console.log(`Copied ${indexHTMLFilePath} to ${outputIndexHTMLFilePath}`);
       }
     });
   });
