@@ -33,12 +33,5 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: gh-pages
-          folder: dist/script.js # Be very specific
-          target-folder: .
-      - name: Deploy index.html
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: gh-pages
-          folder: dist/index.html # Be very specific
-          target-folder: .
+          folder: dist
+          clean: true # Added clean: true
