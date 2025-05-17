@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [master] # Or your main branch name (e.g., main)
+    branches: [master]
 
 permissions:
   id-token: write
@@ -19,7 +19,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18.x' # Or your preferred Node.js version
+          node-version: '18.x'
 
       - name: Install dependencies
         run: npm install
@@ -39,4 +39,3 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
-          environment: github-pages # Even simpler declaration
