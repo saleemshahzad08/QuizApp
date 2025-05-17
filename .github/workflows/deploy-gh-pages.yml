@@ -41,7 +41,6 @@ jobs:
           publish_dir: './dist'
           environment:
             name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-      - name: Set deployment status # Corrected indentation
-        id: deployment            # Corrected indentation
-        uses: actions/github-pages/deployment@v4 # Corrected indentation
+      - name: Set deployment status
+        id: deployment
+        uses: actions/github-pages/deployment@v4
