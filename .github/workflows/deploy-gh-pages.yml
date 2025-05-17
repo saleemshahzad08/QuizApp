@@ -7,7 +7,7 @@ on:
 permissions:
   id-token: write
   contents: read
-  pages: write # Added this line
+  pages: write
 
 jobs:
   build-and-deploy:
@@ -39,3 +39,9 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
+          environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+      - name: Set deployment status
+        id: deployment
+        uses: actions/github-pages/deployment@v4
