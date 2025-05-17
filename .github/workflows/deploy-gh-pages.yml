@@ -39,8 +39,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: './dist'
-          environment:
-            name: github-pages
+          environment: github-pages # Simplified environment declaration
       - name: Set deployment status
         id: deployment
         uses: actions/github-pages/deployment@v4
