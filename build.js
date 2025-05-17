@@ -4,7 +4,10 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 const apiKey = process.env.OPENROUTER_API_KEY;
-const scriptFilePath = 'script.js'; // Explicitly define the input file
+
+console.log("API Key from process.env:", apiKey); // Added this line
+
+const scriptFilePath = 'script.js';
 const outputDir = 'dist';
 const outputScriptFilePath = `${outputDir}/script.js`;
 const indexHTMLFilePath = 'index.html';
